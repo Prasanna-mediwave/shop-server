@@ -7,12 +7,13 @@ import {
   productUpdate,
   pageNumber,
 } from "../controllers/product";
+import { verifyToken } from "../middelware/authToken";
 
 const router = express.Router();
 
 router.post("/create", productData);
 
-router.get("/all", allProduct);
+router.get("/all", verifyToken, allProduct);
 
 router.get("/:id", productId);
 

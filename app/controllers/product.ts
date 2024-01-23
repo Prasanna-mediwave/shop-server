@@ -6,29 +6,14 @@ import {
   updateProduct,
   pagination,
 } from "../services/product";
-import jwt from "jsonwebtoken";
-
-const secretKey = "secretKey";
-const verifyToken = (token: string, secret: string): any => {
-  try {
-    const decode = jwt.verify(token, secret);
-    return decode;
-  } catch (error) {
-    return null;
-  }
-};
 
 export const productData = async (req: any, res: any) => {
   const data = await createProduct(req.body);
   res.send(data);
 };
 export const allProduct = async (req: any, res: any) => {
-  const accessToken = req.headers["access-token"];
-  const decode = await verifyToken(accessToken, secretKey);
-  if (decode) {
-    const allData = await getAllProduct();
-    res.send(allData);
-  } else res.status(401).send("user not found");
+  const allData = await getAllProduct();
+  res.send(allData);
 };
 
 export const productId = async (req: any, res: any) => {
