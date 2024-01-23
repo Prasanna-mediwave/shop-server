@@ -3,8 +3,8 @@ import { cartList, userCart } from "../controllers/addToCart";
 
 const router = express.Router();
 
-router.route("/user/cart").post(cartList);
+router.post("/user/cart", cartList);
 
-router.route("/cart/:id").get(userCart);
+router.get("/cart/:id", userCart);
 
 export default router;

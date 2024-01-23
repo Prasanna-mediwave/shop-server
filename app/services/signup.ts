@@ -1,6 +1,5 @@
 import SignupModules from "../model/signup";
 import bcrypt from "bcrypt";
-import crypto from "crypto";
 import jwtToken from "jsonwebtoken";
 
 export const createUser = async (body: any) => {
