@@ -8,11 +8,12 @@ export const verifyToken = async (
   res: Response,
   next: NextFunction
 ) => {
-  const token: any = req.headers["access-token"];
+  const token = req.header("Authorization");
   if (!token) {
     return res.status(401).send("No token provided!");
   }
-  jwt.verify(token, secretKey, (err: any) => {
+  const tokenData = token.replace("Bearer ", "");
+  jwt.verify(tokenData, secretKey, (err: any) => {
     if (err) {
       return res.status(403).send("Unauthorized! Access Token was expired!");
     }
