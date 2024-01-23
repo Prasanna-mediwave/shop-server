@@ -15,6 +15,7 @@ export const loginData = async (req: any, res: any) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (passwordMatch) {
       const payload = {
+        userId: user._id,
         emailId: email,
         password: password,
       };
