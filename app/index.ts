@@ -7,7 +7,7 @@ import cartRouter from "./routes/addToCart";
 import cors from "cors";
 
 const app = express();
-const PORT = 2306;
+const PORT = 3001;
 
 app.use(bodyParser.json());
 app.use(cors());
