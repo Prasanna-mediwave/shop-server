@@ -1,3 +1,4 @@
+import { userToken } from "../middelware/authToken";
 import { creatCartList, getCartByUser } from "../services/addToCart";
 
 export const cartList = async (req: any, res: any) => {
@@ -6,6 +7,7 @@ export const cartList = async (req: any, res: any) => {
 };
 
 export const userCart = async (req: any, res: any) => {
-  const cart = await getCartByUser(req.params.id);
+  const user = userToken(req.headers);
+  const cart = await getCartByUser(user);
   res.send(cart);
 };

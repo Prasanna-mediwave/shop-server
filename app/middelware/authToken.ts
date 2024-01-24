@@ -13,10 +13,17 @@ export const verifyToken = async (
     return res.status(401).send("No token provided!");
   }
   const tokenData = token.replace("Bearer ", "");
-  jwt.verify(tokenData, secretKey, (err: any) => {
+  jwt.verify(tokenData, secretKey, (err: any, decoded: any) => {
     if (err) {
       return res.status(403).send("Unauthorized! Access Token was expired!");
     }
+    console.log(decoded);
+
     next();
   });
+};
+export const userToken = (header: any) => {
+  const token = header.authorization.replace("Bearer ", "");
+  const decode: any = jwt.decode(token);
+  return decode.userId;
 };

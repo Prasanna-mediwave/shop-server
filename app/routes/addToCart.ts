@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post("/user/cart", cartList);
 
-router.get("/cart/:id", userCart);
+router.get("/cart", userCart);
 
 export default router;
