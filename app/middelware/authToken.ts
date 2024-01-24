@@ -17,7 +17,6 @@ export const verifyToken = async (
     if (err) {
       return res.status(403).send("Unauthorized! Access Token was expired!");
     }
-    console.log(decoded);
 
     next();
   });

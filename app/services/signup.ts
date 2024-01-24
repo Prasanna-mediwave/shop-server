@@ -20,7 +20,7 @@ export const loginData = async (req: any, res: any) => {
         password: password,
       };
       const secretKey = "secretKey";
-      const login = jwtToken.sign(payload, secretKey, { expiresIn: "24h" });
+      const login = jwtToken.sign(payload, secretKey, { expiresIn: "1h" });
       res.status(200).json({ loginToken: login });
     } else {
       res.status(401).json({ error: "Invalid email or password" });
