@@ -26,6 +26,14 @@ const productSchema: Schema = new Schema({
     type: Date,
     default: moment(),
   },
+  quantity: {
+    type: Number,
+    default: 1,
+  },
+  active: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const ProductModel = mongoose.model("product", productSchema);

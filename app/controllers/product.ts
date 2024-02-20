@@ -5,6 +5,7 @@ import {
   delProduct,
   updateProduct,
   pagination,
+  updateExistingDocuments,
 } from "../services/product";
 
 export const productData = async (req: any, res: any) => {
@@ -33,5 +34,10 @@ export const productUpdate = async (req: any, res: any) => {
 
 export const pageNumber = async (req: any, res: any) => {
   const page = await pagination(req.params.page);
+  res.send(page);
+};
+
+export const updateQnt = async (req: any, res: any) => {
+  const page = await updateExistingDocuments();
   res.send(page);
 };

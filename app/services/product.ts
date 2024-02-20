@@ -1,5 +1,17 @@
 import ProductModel from "../model/product";
 
+export const updateExistingDocuments = async () => {
+  try {
+    const updatedDocuments = await ProductModel.updateMany(
+      {},
+      { $set: { active: false, quantity: 1 } }
+    );
+    return updatedDocuments;
+  } catch (error) {
+    console.error("Error updating existing documents:", error);
+  }
+};
+
 export const createProduct = async (body: any) => {
   const create = await ProductModel.create(body);
   return create;
